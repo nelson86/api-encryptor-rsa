@@ -13,15 +13,15 @@ import java.security.spec.PKCS8EncodedKeySpec;
 
 public class DecryptorRsaText implements Decryptor {
 
-	private final String key;
+	private final String privateKey;
 
-	public DecryptorRsaText(String key) {
-		this.key = key;
+	public DecryptorRsaText(String privateKey) {
+		this.privateKey = privateKey;
 	}
 
 	private RSAPrivateKey getRSAPrivateKey() throws Exception {
 		Security.addProvider(new BouncyCastleProvider());
-		byte[] encoded = Base64.decode( key.getBytes(StandardCharsets.UTF_8) );
+		byte[] encoded = Base64.decode( privateKey.getBytes(StandardCharsets.UTF_8) );
 		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 		PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(encoded);
 		return (RSAPrivateKey) keyFactory.generatePrivate(keySpec);

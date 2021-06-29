@@ -17,7 +17,7 @@ openssl rsa -in private-key.pem -pubout -out public-key.pem
 @Log4j2
 class EncryptorRsaTextTest {
 
-	private final String CLAVE_PUBLICA = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAufhQQfXIpAG4ApGiOBsl" +
+	private final String PUBLIC_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAufhQQfXIpAG4ApGiOBsl" +
 			"Hi8Nv9eNEM1cpvJqRMd4/rBsZ+kQhSWUbcV0LsYr7F/3ixrs8A68lHGpfRCDgoOe" +
 			"LBrLhq8EcvoBypTWOmTyC5QNNc5tnxoGhdxr7nwwIkRTzW/+ztJSDjgOfjD8Zgml" +
 			"cOapx25NCNuqpdPDOUcdDHBTmM8P1bIBjBkuA3RH5WV65qBNo/cqw2REhmVmUetl" +
@@ -25,7 +25,7 @@ class EncryptorRsaTextTest {
 			"Tc3M4u0Pvzd8tKt3KekVbOjl+s/4uBodgbOl0zqegKm15c7rSUAfZJ1XojCaC0cy" +
 			"EwIDAQAB";
 
-	private final String CLAVE_PRIVADA = "MIIEpAIBAAKCAQEAufhQQfXIpAG4ApGiOBslHi8Nv9eNEM1cpvJqRMd4/rBsZ+kQ" +
+	private final String PRIVATE_KEY = "MIIEpAIBAAKCAQEAufhQQfXIpAG4ApGiOBslHi8Nv9eNEM1cpvJqRMd4/rBsZ+kQ" +
 			"hSWUbcV0LsYr7F/3ixrs8A68lHGpfRCDgoOeLBrLhq8EcvoBypTWOmTyC5QNNc5t" +
 			"nxoGhdxr7nwwIkRTzW/+ztJSDjgOfjD8ZgmlcOapx25NCNuqpdPDOUcdDHBTmM8P" +
 			"1bIBjBkuA3RH5WV65qBNo/cqw2REhmVmUetlEY42ZBp3FIBa65CqmruW8uqMDk7O" +
@@ -56,8 +56,8 @@ class EncryptorRsaTextTest {
 
 	@BeforeEach
 	void setUp() {
-		this.encryptor = new EncryptorRsaText(CLAVE_PUBLICA);
-		this.decryptor = new DecryptorRsaText(CLAVE_PRIVADA);
+		this.encryptor = new EncryptorRsaText(PUBLIC_KEY);
+		this.decryptor = new DecryptorRsaText(PRIVATE_KEY);
 	}
 
 	@Test

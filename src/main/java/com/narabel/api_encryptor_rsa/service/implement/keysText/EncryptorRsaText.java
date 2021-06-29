@@ -10,14 +10,14 @@ import java.security.spec.X509EncodedKeySpec;
 
 public class EncryptorRsaText implements Encryptor {
 
-	private final String key;
+	private final String publicKey;
 
-	public EncryptorRsaText(String key) {
-		this.key = key;
+	public EncryptorRsaText(String publicKey) {
+		this.publicKey = publicKey;
 	}
 
 	private RSAPublicKey getRSAPublicKey() throws Exception {
-		byte[] encoded = Base64.decode( this.key );
+		byte[] encoded = Base64.decode( this.publicKey);
 		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 		X509EncodedKeySpec keySpec = new X509EncodedKeySpec(encoded);
 		return (RSAPublicKey) keyFactory.generatePublic(keySpec);
